@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watched Movies - MovieTracker</title>
+  <meta name="description" content="Your watched movies">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+  <div class="min-h-screen flex-col">
+    <!-- Navigation -->
+    <header class="fixed w-full bg-header backdrop-blur z-50 border-bottom">
+      <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="index.html" class="text-2xl font-bold text-primary">MovieTracker</a>
+        
+        <!-- Mobile menu button -->
+        <button class="md-hidden text-foreground" id="menu-toggle" aria-label="Toggle menu">
+          <span class="menu-icon">☰</span>
+        </button>
+        
+        <!-- Desktop navigation -->
+        <ul class="hidden md-flex space-x-8" id="desktop-nav">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="movies.html" class="nav-link">Movies</a></li>
+          <li><a href="watchlist.html" class="nav-link">Watchlist</a></li>
+          <li><a href="watched.html" class="nav-link active">Watched</a></li>
+        </ul>
+        
+        <!-- Mobile navigation -->
+        <div class="mobile-nav md-hidden" id="mobile-nav">
+          <ul class="flex-col p-4">
+            <li class="py-2"><a href="index.html" class="block nav-link">Home</a></li>
+            <li class="py-2"><a href="movies.html" class="block nav-link">Movies</a></li>
+            <li class="py-2"><a href="watchlist.html" class="block nav-link">Watchlist</a></li>
+            <li class="py-2"><a href="watched.html" class="block nav-link active">Watched</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 py-8 pt-24">
+      <h1 class="text-3xl font-bold mb-6">Watched Movies</h1>
+      
+      <div id="empty-watched" class="text-center py-12 hidden">
+        <h3 class="text-xl mb-2">You haven't watched any movies yet</h3>
+        <p class="text-muted">Mark movies as watched to keep track of what you've seen</p>
+      </div>
+      
+      <div class="movie-grid" id="watched-grid">
+        <!-- Watched movies will be inserted here -->
+        <div class="movie-skeleton"></div>
+        <div class="movie-skeleton"></div>
+        <div class="movie-skeleton"></div>
+        <div class="movie-skeleton"></div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-card border-top py-6">
+      <div class="container mx-auto px-4 text-center">
+        <p class="text-sm text-muted">
+          &copy; <span id="current-year"></span> MovieTracker. All rights reserved.
+        </p>
+        <p class="text-xs text-muted mt-2">
+          Movie data provided by
+          <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer" class="underline hover-primary">
+            TMDB
+          </a>
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="config.js"></script>
+</body>
+</html>

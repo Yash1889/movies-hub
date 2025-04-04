@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Details - MovieTracker</title>
+  <meta name="description" content="Movie details">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+  <div class="min-h-screen flex-col">
+    <!-- Navigation -->
+    <header class="fixed w-full bg-header backdrop-blur z-50 border-bottom">
+      <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="index.html" class="text-2xl font-bold text-primary">MovieTracker</a>
+        
+        <!-- Mobile menu button -->
+        <button class="md-hidden text-foreground" id="menu-toggle" aria-label="Toggle menu">
+          <span class="menu-icon">☰</span>
+        </button>
+        
+        <!-- Desktop navigation -->
+        <ul class="hidden md-flex space-x-8" id="desktop-nav">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="movies.html" class="nav-link">Movies</a></li>
+          <li><a href="watchlist.html" class="nav-link">Watchlist</a></li>
+          <li><a href="watched.html" class="nav-link">Watched</a></li>
+        </ul>
+        
+        <!-- Mobile navigation -->
+        <div class="mobile-nav md-hidden" id="mobile-nav">
+          <ul class="flex-col p-4">
+            <li class="py-2"><a href="index.html" class="block nav-link">Home</a></li>
+            <li class="py-2"><a href="movies.html" class="block nav-link">Movies</a></li>
+            <li class="py-2"><a href="watchlist.html" class="block nav-link">Watchlist</a></li>
+            <li class="py-2"><a href="watched.html" class="block nav-link">Watched</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="flex-grow">
+      <!-- Movie details skeleton -->
+      <div id="movie-details-skeleton">
+        <div class="skeleton-backdrop"></div>
+        <div class="container mx-auto px-4 py-8">
+          <div class="grid-cols-1-3 gap-8">
+            <div class="col-span-2 space-y-6">
+              <div class="skeleton h-8 w-3-4"></div>
+              <div class="skeleton h-4 w-full"></div>
+              <div class="skeleton h-4 w-full"></div>
+              <div class="skeleton h-4 w-3-4"></div>
+              <div class="skeleton h-8 w-1-4"></div>
+              <div class="grid-cols-4 gap-4">
+                <div class="skeleton-cast"></div>
+                <div class="skeleton-cast"></div>
+                <div class="skeleton-cast"></div>
+                <div class="skeleton-cast"></div>
+                <div class="skeleton-cast"></div>
+                <div class="skeleton-cast"></div>
+                <div class="skeleton-cast"></div>
+                <div class="skeleton-cast"></div>
+              </div>
+            </div>
+            <div>
+              <div class="skeleton h-64 w-full rounded"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Movie details content -->
+      <div id="movie-details" class="hidden">
+        <!-- Backdrop -->
+        <div id="movie-backdrop" class="relative movie-backdrop">
+          <div class="container mx-auto px-4 h-full flex items-end pb-8">
+            <div class="flex flex-col md-flex-row gap-8">
+              <!-- Poster -->
+              <div class="hidden md-block movie-poster-container">
+                <img id="movie-poster" src="placeholder.jpg" alt="" class="movie-poster-large">
+              </div>
+
+              <!-- Movie info -->
+              <div class="flex-1">
+                <h1 id="movie-title" class="text-3xl md-text-4xl font-bold mb-2"></h1>
+
+                <div class="flex flex-wrap items-center gap-4 mb-4 text-sm" id="movie-meta">
+                  <div class="flex items-center">
+                    <span class="icon text-yellow mr-1">★</span>
+                    <span id="movie-rating"></span>
+                  </div>
+
+                  <div class="flex items-center">
+                    <span class="icon mr-1">📅</span>
+                    <span id="movie-year"></span>
+                  </div>
+
+                  <div class="flex items-center">
+                    <span class="icon mr-1">⏱️</span>
+                    <span id="movie-runtime"></span>
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 mb-4" id="movie-genres">
+                  <!-- Genres will be inserted here -->
+                </div>
+
+                <div class="flex gap-3 mb-6">
+                  <button id="watchlist-btn" class="button outline">
+                    <span class="icon mr-2">+</span>
+                    Add to Watchlist
+                  </button>
+
+                  <button id="watched-btn" class="button outline">
+                    Mark as Watched
+                  </button>
+                </div>
+
+                <div id="rating-container" class="mb-6 hidden">
+                  <p class="text-sm mb-2">Your Rating:</p>
+                  <div class="star-rating" id="star-rating">
+                    <!-- Star rating will be inserted here -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="container mx-auto px-4 py-8">
+          <div class="grid-cols-1-3 gap-8">
+            <!-- Main content -->
+            <div class="col-span-2">
+              <h2 class="text-2xl font-bold mb-4">Overview</h2>
+              <p id="movie-overview" class="mb-8"></p>
+
+              <h2 class="text-2xl font-bold mb-4">Cast</h2>
+              <div class="cast-grid" id="movie-cast">
+                <!-- Cast will be inserted here -->
+              </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div>
+              <div class="bg-card rounded p-4 mb-6">
+                <h3 class="text-lg font-medium mb-4">Movie Info</h3>
+
+                <div id="movie-director-container" class="mb-3 hidden">
+                  <div class="flex items-start">
+                    <span class="icon mr-2 mt-1 flex-shrink-0">👤</span>
+                    <div>
+                      <p class="text-sm text-muted">Director</p>
+                      <p id="movie-director"></p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <div class="flex items-start">
+                    <span class="icon mr-2 mt-1 flex-shrink-0">📅</span>
+                    <div>
+                      <p class="text-sm text-muted">Release Date</p>
+                      <p id="movie-release-date"></p>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="movie-runtime-container" class="mb-3 hidden">
+                  <div class="flex items-start">
+                    <span class="icon mr-2 mt-1 flex-shrink-0">⏱️</span>
+                    <div>
+                      <p class="text-sm text-muted">Runtime</p>
+                      <p id="movie-runtime-full"></p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <div class="flex items-start">
+                    <span class="icon mr-2 mt-1 flex-shrink-0">🎬</span>
+                    <div>
+                      <p class="text-sm text-muted">Genres</p>
+                      <p id="movie-genres-list"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-card border-top py-6">
+      <div class="container mx-auto px-4 text-center">
+        <p class="text-sm text-muted">
+          &copy; <span id="current-year"></span> MovieTracker. All rights reserved.
+        </p>
+        <p class="text-xs text-muted mt-2">
+          Movie data provided by
+          <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer" class="underline hover-primary">
+            TMDB
+          </a>
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="config.js"></script>
+</body>
+</html>

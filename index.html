@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MovieTracker - Track Your Favorite Movies</title>
+  <meta name="description" content="A modern movie tracking application">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+  <div class="min-h-screen flex-col">
+    <!-- Navigation -->
+    <header class="fixed w-full bg-header backdrop-blur z-50 border-bottom">
+      <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="index.html" class="text-2xl font-bold text-primary">MovieTracker</a>
+        
+        <!-- Mobile menu button -->
+        <button class="md-hidden text-foreground" id="menu-toggle" aria-label="Toggle menu">
+          <span class="menu-icon">☰</span>
+        </button>
+        
+        <!-- Desktop navigation -->
+        <ul class="hidden md-flex space-x-8" id="desktop-nav">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="movies.html" class="nav-link">Movies</a></li>
+          <li><a href="watchlist.html" class="nav-link">Watchlist</a></li>
+          <li><a href="watched.html" class="nav-link">Watched</a></li>
+        </ul>
+        
+        <!-- Mobile navigation -->
+        <div class="mobile-nav md-hidden" id="mobile-nav">
+          <ul class="flex-col p-4">
+            <li class="py-2"><a href="index.html" class="block nav-link active">Home</a></li>
+            <li class="py-2"><a href="movies.html" class="block nav-link">Movies</a></li>
+            <li class="py-2"><a href="watchlist.html" class="block nav-link">Watchlist</a></li>
+            <li class="py-2"><a href="watched.html" class="block nav-link">Watched</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="flex-grow">
+      <!-- Hero Section -->
+      <div class="hero-section relative" id="hero-section">
+        <div class="container mx-auto px-4 z-10">
+          <div class="max-w-3xl">
+            <h1 class="text-4xl md-text-5xl lg-text-6xl font-bold mb-4">Track Your Favorite Movies</h1>
+            <p class="text-xl mb-8 text-gray-200">Discover, rate, and keep track of the movies you love</p>
+            
+            <div class="mb-8 max-w-xl">
+              <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search for movies..." class="search-input">
+                <button id="search-button" class="search-button">
+                  <span class="icon">🔍</span>
+                </button>
+              </div>
+              <div class="search-results" id="search-results"></div>
+            </div>
+            
+            <div class="mt-8" id="featured-movie">
+              <!-- Featured movie will be inserted here -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trending Movies Section -->
+      <div class="container mx-auto px-4 py-8">
+        <section class="py-8">
+          <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold">Trending Movies</h2>
+            <a href="movies.html" class="view-all">
+              View All <span class="icon">→</span>
+            </a>
+          </div>
+          
+          <div class="movie-grid" id="trending-movies">
+            <!-- Trending movies will be inserted here -->
+            <div class="movie-skeleton"></div>
+            <div class="movie-skeleton"></div>
+            <div class="movie-skeleton"></div>
+            <div class="movie-skeleton"></div>
+            <div class="movie-skeleton"></div>
+            <div class="movie-skeleton"></div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-card border-top py-6">
+      <div class="container mx-auto px-4 text-center">
+        <p class="text-sm text-muted">
+          &copy; <span id="current-year"></span> MovieTracker. All rights reserved.
+        </p>
+        <p class="text-xs text-muted mt-2">
+          Movie data provided by
+          <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer" class="underline hover-primary">
+            TMDB
+          </a>
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="config.js"></script>
+</body>
+</html>
