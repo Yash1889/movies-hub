@@ -553,7 +553,7 @@ async function loadMovieDetails() {
     
     // Set watched button
     const watchedBtn = document.getElementById('watched-btn');
-    const ratingContainer = document.getElementById('rating-container');
+    const ratingContainer = document.getElementById('rating-container');  
     const inWatched = isInWatched(movie.id);
     
     if (inWatched) {
