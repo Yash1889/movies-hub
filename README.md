@@ -16,7 +16,7 @@ A modern, responsive web application for tracking and discovering movies. Built 
 
 ## 🚀 Live Demo
 
-Visit the live application: [MovieTracker](https://yash1889.github.io/movies-hub/)
+Visit the live application: [MovieTracker](https://movies-hub-sepia-sigma.vercel.app/)
 
 ## 🛠️ Technologies Used
 
@@ -77,13 +77,11 @@ movies-hub/
 
 ### API Configuration
 
-The application uses The Movie Database (TMDB) API. The API key is already configured in `config.js`:
+The application uses The Movie Database (TMDB) API.:
 
 ```javascript
-const API_KEY = '79790dd9dbd8d9233e4edeb1af652187';
+const API_KEY = 'YOUR_TMDB_API_KEY';
 ```
-
-> **Note**: For production use, consider using environment variables to secure your API key.
 
 ## 🎯 How to Use
 
